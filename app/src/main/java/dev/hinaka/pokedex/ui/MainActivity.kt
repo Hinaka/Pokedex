@@ -1,4 +1,4 @@
-package dev.hinaka.pokedex
+package dev.hinaka.pokedex.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

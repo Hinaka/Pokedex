@@ -1,4 +1,4 @@
-package dev.hinaka.pokedex
+package dev.hinaka.pokedex.ui
 
 object PokedexDestinations {
   const val POKEDEX_ROUTE = "pokedex"

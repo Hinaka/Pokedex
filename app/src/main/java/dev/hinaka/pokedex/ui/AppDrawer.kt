@@ -1,4 +1,4 @@
-package dev.hinaka.pokedex
+package dev.hinaka.pokedex.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import dev.hinaka.pokedex.R
 
 @Composable
 fun AppDrawer(

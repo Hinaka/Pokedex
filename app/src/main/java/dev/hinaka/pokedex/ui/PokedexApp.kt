@@ -1,4 +1,4 @@
-package dev.hinaka.pokedex
+package dev.hinaka.pokedex.ui
 
 import androidx.compose.material.DrawerValue
 import androidx.compose.material.ModalDrawer
@@ -6,11 +6,11 @@ import androidx.compose.material.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.compose.rememberNavController
-import dev.hinaka.pokedex.PokedexDestinations.ABILITY_ROUTE
-import dev.hinaka.pokedex.PokedexDestinations.ITEM_ROUTE
-import dev.hinaka.pokedex.PokedexDestinations.MOVE_ROUTE
-import dev.hinaka.pokedex.PokedexDestinations.NATURE_ROUTE
-import dev.hinaka.pokedex.PokedexDestinations.POKEDEX_ROUTE
+import dev.hinaka.pokedex.ui.PokedexDestinations.ABILITY_ROUTE
+import dev.hinaka.pokedex.ui.PokedexDestinations.ITEM_ROUTE
+import dev.hinaka.pokedex.ui.PokedexDestinations.MOVE_ROUTE
+import dev.hinaka.pokedex.ui.PokedexDestinations.NATURE_ROUTE
+import dev.hinaka.pokedex.ui.PokedexDestinations.POKEDEX_ROUTE
 import dev.hinaka.pokedex.ui.theme.PokedexTheme
 import kotlinx.coroutines.launch
 
