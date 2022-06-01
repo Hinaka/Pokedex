@@ -15,6 +15,11 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun AppDrawer(
+  navigateToPokedex: () -> Unit,
+  navigateToMove: () -> Unit,
+  navigateToAbility: () -> Unit,
+  navigateToItem: () -> Unit,
+  navigateToNature: () -> Unit,
   closeDrawer: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
@@ -22,6 +27,7 @@ fun AppDrawer(
     DrawerButton(
       label = stringResource(id = R.string.home_pokedex),
       action = {
+        navigateToPokedex()
         closeDrawer()
       }
     )
@@ -29,6 +35,7 @@ fun AppDrawer(
     DrawerButton(
       label = stringResource(id = R.string.home_move_dex),
       action = {
+        navigateToMove()
         closeDrawer()
       }
     )
@@ -36,6 +43,7 @@ fun AppDrawer(
     DrawerButton(
       label = stringResource(id = R.string.home_ability_dex),
       action = {
+        navigateToAbility()
         closeDrawer()
       }
     )
@@ -43,6 +51,7 @@ fun AppDrawer(
     DrawerButton(
       label = stringResource(id = R.string.home_item_dex),
       action = {
+        navigateToItem()
         closeDrawer()
       }
     )
@@ -50,6 +59,7 @@ fun AppDrawer(
     DrawerButton(
       label = stringResource(id = R.string.home_nature_dex),
       action = {
+        navigateToNature()
         closeDrawer()
       }
     )
