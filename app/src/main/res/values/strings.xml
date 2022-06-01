@@ -1,3 +1,10 @@
 <resources>
   <string name="app_name">Pokedex</string>
+
+  <!--  Home Screen -->
+  <string name="home_pokedex">Pokédex</string>
+  <string name="home_move_dex">Move Dex</string>
+  <string name="home_ability_dex">Ability Dex</string>
+  <string name="home_item_dex">Item Dex</string>
+  <string name="home_nature_dex">Nature Dex</string>
 </resources>
