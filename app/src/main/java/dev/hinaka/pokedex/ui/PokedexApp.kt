@@ -4,7 +4,9 @@ import androidx.compose.material.DrawerValue
 import androidx.compose.material.ModalDrawer
 import androidx.compose.material.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import dev.hinaka.pokedex.ui.PokedexDestinations.ABILITY_ROUTE
 import dev.hinaka.pokedex.ui.PokedexDestinations.ITEM_ROUTE
@@ -18,11 +20,18 @@ import kotlinx.coroutines.launch
 fun PokedexApp() {
   PokedexTheme {
     val coroutineScope = rememberCoroutineScope()
+
     val navController = rememberNavController()
+
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route ?: POKEDEX_ROUTE
+
     val drawerState = rememberDrawerState(DrawerValue.Closed)
+
     ModalDrawer(
       drawerContent = {
         AppDrawer(
+          currentRoute = currentRoute,
           navigateToPokedex = {
             navController.navigate(POKEDEX_ROUTE)
           },
