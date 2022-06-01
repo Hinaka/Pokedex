@@ -1,5 +1,6 @@
-package dev.hinaka.pokedex.domain.models
+package dev.hinaka.pokedex.domain.models.pokemon
 
+import dev.hinaka.pokedex.domain.models.type.Type
 import dev.hinaka.pokedex.domain.models.common.Id
 import dev.hinaka.pokedex.domain.models.common.Sprites
 

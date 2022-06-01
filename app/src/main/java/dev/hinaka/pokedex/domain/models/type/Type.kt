@@ -1,4 +1,4 @@
-package dev.hinaka.pokedex.domain.models
+package dev.hinaka.pokedex.domain.models.type
 
 enum class Type {
   NORMAL,
