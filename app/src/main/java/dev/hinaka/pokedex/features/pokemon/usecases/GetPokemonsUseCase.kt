@@ -1,4 +1,4 @@
-package dev.hinaka.pokedex.ui.pokedex.usecases
+package dev.hinaka.pokedex.features.pokemon.usecases
 
 import dev.hinaka.pokedex.domain.models.pokemon.Pokemon
 import dev.hinaka.pokedex.domain.repositories.PokemonRepository

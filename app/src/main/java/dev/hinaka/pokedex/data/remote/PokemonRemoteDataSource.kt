@@ -4,7 +4,7 @@ import dev.hinaka.pokedex.data.responses.pokemon.toPokemons
 import javax.inject.Inject
 
 class PokemonRemoteDataSource @Inject constructor(
-  private val pokemonService: PokemonService
+  private val pokemonService: PokemonService,
 ) {
   suspend fun getPokemons() = pokemonService.getPokemons().toPokemons()
 }

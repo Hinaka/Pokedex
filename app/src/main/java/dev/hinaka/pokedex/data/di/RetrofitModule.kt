@@ -1,4 +1,4 @@
-package dev.hinaka.pokedex.ui.pokedex
+package dev.hinaka.pokedex.data.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
@@ -6,24 +6,34 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.hinaka.pokedex.data.remote.PokemonService
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import retrofit2.Retrofit
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RemoteModule {
+class RetrofitModule {
+
+  @OptIn(ExperimentalSerializationApi::class)
+  @Singleton
   @Provides
-  fun providePokemonService(): PokemonService {
+  fun provideRetrofit(): Retrofit {
     val contentType = MediaType.parse("application/json")
     val json = Json {
       ignoreUnknownKeys = true
     }
-    val retrofit = Retrofit.Builder()
-      .baseUrl("https://pokeapi.co/api/v2/")
-      .addConverterFactory(json.asConverterFactory(contentType!!))
-      .build()
+    val jsonConverterFactory = json.asConverterFactory(contentType!!)
 
+    return Retrofit.Builder()
+      .baseUrl("https://pokeapi.co/api/v2/")
+      .addConverterFactory(jsonConverterFactory)
+      .build()
+  }
+
+  @Provides
+  fun providePokemonService(retrofit: Retrofit): PokemonService {
     return retrofit.create(PokemonService::class.java)
   }
 }

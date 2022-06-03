@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.hinaka.pokedex.domain.models.pokemon.Pokemon
-import dev.hinaka.pokedex.ui.pokedex.usecases.GetPokemonsUseCase
+import dev.hinaka.pokedex.features.pokemon.usecases.GetPokemonsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
