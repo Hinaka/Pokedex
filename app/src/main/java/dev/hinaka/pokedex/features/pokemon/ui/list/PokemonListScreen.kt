@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
@@ -16,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import dev.hinaka.pokedex.domain.models.pokemon.Pokemon
 import dev.hinaka.pokedex.ui.pokedex.PokemonListViewModel
 
@@ -53,6 +55,11 @@ fun PokemonItem(pokemon: Pokemon) {
     ) {
       Text(text = "#${pokemon.id}")
       Text(text = pokemon.name.replaceFirstChar { it.uppercase() })
+      AsyncImage(
+        model = pokemon.sprites.default,
+        contentDescription = pokemon.name,
+        modifier = Modifier.size(64.dp)
+      )
     }
   }
 }

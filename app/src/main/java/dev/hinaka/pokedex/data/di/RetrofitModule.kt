@@ -9,6 +9,7 @@ import dev.hinaka.pokedex.data.remote.PokemonService
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -20,11 +21,11 @@ class RetrofitModule {
   @Singleton
   @Provides
   fun provideRetrofit(): Retrofit {
-    val contentType = MediaType.parse("application/json")
+    val contentType = "application/json".toMediaType()
     val json = Json {
       ignoreUnknownKeys = true
     }
-    val jsonConverterFactory = json.asConverterFactory(contentType!!)
+    val jsonConverterFactory = json.asConverterFactory(contentType)
 
     return Retrofit.Builder()
       .baseUrl("https://pokeapi.co/api/v2/")
