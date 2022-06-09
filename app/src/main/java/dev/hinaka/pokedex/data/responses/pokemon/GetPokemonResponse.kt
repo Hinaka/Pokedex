@@ -1,5 +1,6 @@
 package dev.hinaka.pokedex.data.responses.pokemon
 
+import dev.hinaka.pokedex.data.responses.common.NameAndUrl
 import dev.hinaka.pokedex.domain.models.common.Id
 import dev.hinaka.pokedex.domain.models.common.Sprites
 import dev.hinaka.pokedex.domain.models.pokemon.Pokemon
@@ -11,14 +12,14 @@ import kotlinx.serialization.Serializable
 data class GetPokemonResponse(
   val id: Int?,
   val name: String?,
-  val types: List<Type>?,
+  val types: List<PokemonType>?,
   val sprites: Sprites?,
 ) {
 
   @Serializable
-  data class Type(
+  data class PokemonType(
     val slot: Int?,
-    val type: GetPokemonsResponse.Item?,
+    val type: NameAndUrl?,
   )
 
   @Serializable
