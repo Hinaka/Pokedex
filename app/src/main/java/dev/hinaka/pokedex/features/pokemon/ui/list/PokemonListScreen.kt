@@ -33,5 +33,5 @@ fun PokemonListScreen(
 
 @Composable
 fun PokemonItem(pokemon: Pokemon) {
-  Text(text = pokemon.name)
+  Text(text = pokemon.toString())
 }
