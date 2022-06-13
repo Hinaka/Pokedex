@@ -26,12 +26,32 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import dev.hinaka.pokedex.R
 import dev.hinaka.pokedex.domain.models.pokemon.Pokemon
 import dev.hinaka.pokedex.domain.models.type.Type
+import dev.hinaka.pokedex.domain.models.type.Type.BUG
+import dev.hinaka.pokedex.domain.models.type.Type.DARK
+import dev.hinaka.pokedex.domain.models.type.Type.DRAGON
+import dev.hinaka.pokedex.domain.models.type.Type.ELECTRIC
+import dev.hinaka.pokedex.domain.models.type.Type.FAIRY
+import dev.hinaka.pokedex.domain.models.type.Type.FIGHTING
+import dev.hinaka.pokedex.domain.models.type.Type.FIRE
+import dev.hinaka.pokedex.domain.models.type.Type.FLYING
+import dev.hinaka.pokedex.domain.models.type.Type.GHOST
+import dev.hinaka.pokedex.domain.models.type.Type.GRASS
+import dev.hinaka.pokedex.domain.models.type.Type.GROUND
+import dev.hinaka.pokedex.domain.models.type.Type.ICE
+import dev.hinaka.pokedex.domain.models.type.Type.NORMAL
+import dev.hinaka.pokedex.domain.models.type.Type.POISON
+import dev.hinaka.pokedex.domain.models.type.Type.PSYCHIC
+import dev.hinaka.pokedex.domain.models.type.Type.ROCK
+import dev.hinaka.pokedex.domain.models.type.Type.STEEL
+import dev.hinaka.pokedex.domain.models.type.Type.UNKNOWN
+import dev.hinaka.pokedex.domain.models.type.Type.WATER
 import dev.hinaka.pokedex.ui.pokedex.PokemonListViewModel
 import dev.hinaka.pokedex.ui.theme.ofType
 
@@ -126,7 +146,7 @@ private fun PokemonType(type: Type, modifier: Modifier = Modifier, textColor: Co
         contentDescription = ""
       )
       Text(
-        text = type.name.uppercase(),
+        text = type.displayName.uppercase(),
         textAlign = TextAlign.Center,
         modifier = Modifier
           .fillMaxWidth()
@@ -156,23 +176,46 @@ private fun PokemonImage(pokemon: Pokemon, modifier: Modifier = Modifier) {
 
 private val Type.painter: Painter
   @Composable get() = when (this) {
-    Type.NORMAL -> painterResource(id = R.drawable.ic_type_normal)
-    Type.FIGHTING -> painterResource(id = R.drawable.ic_type_fighting)
-    Type.FLYING -> painterResource(id = R.drawable.ic_type_flying)
-    Type.POISON -> painterResource(id = R.drawable.ic_type_poison)
-    Type.GROUND -> painterResource(id = R.drawable.ic_type_ground)
-    Type.ROCK -> painterResource(id = R.drawable.ic_type_rock)
-    Type.BUG -> painterResource(id = R.drawable.ic_type_bug)
-    Type.GHOST -> painterResource(id = R.drawable.ic_type_ghost)
-    Type.STEEL -> painterResource(id = R.drawable.ic_type_steel)
-    Type.FIRE -> painterResource(id = R.drawable.ic_type_fire)
-    Type.WATER -> painterResource(id = R.drawable.ic_type_water)
-    Type.GRASS -> painterResource(id = R.drawable.ic_type_grass)
-    Type.ELECTRIC -> painterResource(id = R.drawable.ic_type_electric)
-    Type.PSYCHIC -> painterResource(id = R.drawable.ic_type_psychic)
-    Type.ICE -> painterResource(id = R.drawable.ic_type_ice)
-    Type.DRAGON -> painterResource(id = R.drawable.ic_type_dragon)
-    Type.DARK -> painterResource(id = R.drawable.ic_type_dark)
-    Type.FAIRY -> painterResource(id = R.drawable.ic_type_fairy)
-    Type.UNKNOWN -> painterResource(id = R.drawable.ic_type_normal)
+    NORMAL -> painterResource(id = R.drawable.ic_type_normal)
+    FIGHTING -> painterResource(id = R.drawable.ic_type_fighting)
+    FLYING -> painterResource(id = R.drawable.ic_type_flying)
+    POISON -> painterResource(id = R.drawable.ic_type_poison)
+    GROUND -> painterResource(id = R.drawable.ic_type_ground)
+    ROCK -> painterResource(id = R.drawable.ic_type_rock)
+    BUG -> painterResource(id = R.drawable.ic_type_bug)
+    GHOST -> painterResource(id = R.drawable.ic_type_ghost)
+    STEEL -> painterResource(id = R.drawable.ic_type_steel)
+    FIRE -> painterResource(id = R.drawable.ic_type_fire)
+    WATER -> painterResource(id = R.drawable.ic_type_water)
+    GRASS -> painterResource(id = R.drawable.ic_type_grass)
+    ELECTRIC -> painterResource(id = R.drawable.ic_type_electric)
+    PSYCHIC -> painterResource(id = R.drawable.ic_type_psychic)
+    ICE -> painterResource(id = R.drawable.ic_type_ice)
+    DRAGON -> painterResource(id = R.drawable.ic_type_dragon)
+    DARK -> painterResource(id = R.drawable.ic_type_dark)
+    FAIRY -> painterResource(id = R.drawable.ic_type_fairy)
+    UNKNOWN -> painterResource(id = R.drawable.ic_type_normal)
+  }
+
+private val Type.displayName: String
+  @Composable get() = when (this) {
+    NORMAL -> stringResource(id = R.string.type_normal)
+    FIGHTING -> stringResource(id = R.string.type_fighting)
+    FLYING -> stringResource(id = R.string.type_flying)
+    POISON -> stringResource(id = R.string.type_poison)
+    GROUND -> stringResource(id = R.string.type_ground)
+    ROCK -> stringResource(id = R.string.type_rock)
+    BUG -> stringResource(id = R.string.type_bug)
+    GHOST -> stringResource(id = R.string.type_ghost)
+    STEEL -> stringResource(id = R.string.type_steel)
+    FIRE -> stringResource(id = R.string.type_fire)
+    WATER -> stringResource(id = R.string.type_water)
+    GRASS -> stringResource(id = R.string.type_grass)
+    ELECTRIC -> stringResource(id = R.string.type_electric)
+    PSYCHIC -> stringResource(id = R.string.type_psychic)
+    ICE -> stringResource(id = R.string.type_ice)
+    DRAGON -> stringResource(id = R.string.type_dragon)
+    DARK -> stringResource(id = R.string.type_dark)
+    FAIRY -> stringResource(id = R.string.type_fairy)
+    UNKNOWN -> stringResource(id = R.string.type_unknown)
   }
