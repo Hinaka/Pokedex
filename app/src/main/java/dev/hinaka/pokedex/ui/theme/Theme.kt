@@ -8,7 +8,25 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import dev.hinaka.pokedex.domain.models.type.Type
-import dev.hinaka.pokedex.domain.models.type.Type.*
+import dev.hinaka.pokedex.domain.models.type.Type.BUG
+import dev.hinaka.pokedex.domain.models.type.Type.DARK
+import dev.hinaka.pokedex.domain.models.type.Type.DRAGON
+import dev.hinaka.pokedex.domain.models.type.Type.ELECTRIC
+import dev.hinaka.pokedex.domain.models.type.Type.FAIRY
+import dev.hinaka.pokedex.domain.models.type.Type.FIGHTING
+import dev.hinaka.pokedex.domain.models.type.Type.FIRE
+import dev.hinaka.pokedex.domain.models.type.Type.FLYING
+import dev.hinaka.pokedex.domain.models.type.Type.GHOST
+import dev.hinaka.pokedex.domain.models.type.Type.GRASS
+import dev.hinaka.pokedex.domain.models.type.Type.GROUND
+import dev.hinaka.pokedex.domain.models.type.Type.ICE
+import dev.hinaka.pokedex.domain.models.type.Type.NORMAL
+import dev.hinaka.pokedex.domain.models.type.Type.POISON
+import dev.hinaka.pokedex.domain.models.type.Type.PSYCHIC
+import dev.hinaka.pokedex.domain.models.type.Type.ROCK
+import dev.hinaka.pokedex.domain.models.type.Type.STEEL
+import dev.hinaka.pokedex.domain.models.type.Type.UNKNOWN
+import dev.hinaka.pokedex.domain.models.type.Type.WATER
 
 private val DarkColorPalette = darkColors(
   primary = Red200,
