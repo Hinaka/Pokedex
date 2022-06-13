@@ -1,6 +1,6 @@
 package dev.hinaka.pokedex.features.pokemon.ui.list
 
-import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -24,10 +24,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import dev.hinaka.pokedex.R
 import dev.hinaka.pokedex.domain.models.pokemon.Pokemon
 import dev.hinaka.pokedex.domain.models.type.Type
 import dev.hinaka.pokedex.ui.pokedex.PokemonListViewModel
@@ -118,15 +120,21 @@ private fun PokemonType(type: Type, modifier: Modifier = Modifier, textColor: Co
     shape = RoundedCornerShape(16.dp),
     color = MaterialTheme.colors.ofType(type),
   ) {
-    Text(
-      text = type.name.uppercase(),
-      textAlign = TextAlign.Center,
-      modifier = Modifier
-        .fillMaxWidth()
-        .padding(vertical = 4.dp),
-      color = textColor,
-      style = MaterialTheme.typography.caption
-    )
+    Row {
+      Image(
+        painter = type.painter,
+        contentDescription = ""
+      )
+      Text(
+        text = type.name.uppercase(),
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+          .fillMaxWidth()
+          .padding(vertical = 4.dp),
+        color = textColor,
+        style = MaterialTheme.typography.caption
+      )
+    }
   }
 }
 
@@ -145,3 +153,26 @@ private fun PokemonImage(pokemon: Pokemon, modifier: Modifier = Modifier) {
       modifier = Modifier.padding(4.dp))
   }
 }
+
+private val Type.painter: Painter
+  @Composable get() = when (this) {
+    Type.NORMAL -> painterResource(id = R.drawable.ic_type_normal)
+    Type.FIGHTING -> painterResource(id = R.drawable.ic_type_fighting)
+    Type.FLYING -> painterResource(id = R.drawable.ic_type_flying)
+    Type.POISON -> painterResource(id = R.drawable.ic_type_poison)
+    Type.GROUND -> painterResource(id = R.drawable.ic_type_ground)
+    Type.ROCK -> painterResource(id = R.drawable.ic_type_rock)
+    Type.BUG -> painterResource(id = R.drawable.ic_type_bug)
+    Type.GHOST -> painterResource(id = R.drawable.ic_type_ghost)
+    Type.STEEL -> painterResource(id = R.drawable.ic_type_steel)
+    Type.FIRE -> painterResource(id = R.drawable.ic_type_fire)
+    Type.WATER -> painterResource(id = R.drawable.ic_type_water)
+    Type.GRASS -> painterResource(id = R.drawable.ic_type_grass)
+    Type.ELECTRIC -> painterResource(id = R.drawable.ic_type_electric)
+    Type.PSYCHIC -> painterResource(id = R.drawable.ic_type_psychic)
+    Type.ICE -> painterResource(id = R.drawable.ic_type_ice)
+    Type.DRAGON -> painterResource(id = R.drawable.ic_type_dragon)
+    Type.DARK -> painterResource(id = R.drawable.ic_type_dark)
+    Type.FAIRY -> painterResource(id = R.drawable.ic_type_fairy)
+    Type.UNKNOWN -> painterResource(id = R.drawable.ic_type_normal)
+  }
