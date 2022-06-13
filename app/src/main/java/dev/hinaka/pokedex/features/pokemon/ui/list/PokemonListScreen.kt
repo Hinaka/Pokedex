@@ -4,14 +4,18 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,10 +31,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import dev.hinaka.pokedex.R
+import dev.hinaka.pokedex.domain.models.common.Id
+import dev.hinaka.pokedex.domain.models.common.Sprites
 import dev.hinaka.pokedex.domain.models.pokemon.Pokemon
 import dev.hinaka.pokedex.domain.models.type.Type
 import dev.hinaka.pokedex.domain.models.type.Type.BUG
@@ -62,115 +72,155 @@ fun PokemonListScreen(
   val pokemons by viewModel.pokemons.collectAsState()
   LazyColumn(
     modifier = Modifier.fillMaxSize(),
+    contentPadding = PaddingValues(all = 8.dp),
+    verticalArrangement = Arrangement.spacedBy(8.dp),
   ) {
-    items(
-      items = pokemons,
-      itemContent = {
-        PokemonItem(pokemon = it, modifier = Modifier.fillMaxWidth())
-      }
-    )
+    items(pokemons) { pokemon ->
+      PokemonItem(pokemon = pokemon, modifier = Modifier.fillMaxWidth())
+    }
   }
 }
 
+@Preview
 @Composable
-private fun PokemonItem(pokemon: Pokemon, modifier: Modifier = Modifier) {
-  val surfaceModifier = Modifier
-    .padding(start = 8.dp, top = 8.dp, end = 8.dp)
-    .fillMaxWidth()
+private fun PokemonItemPreview() {
+  PokemonItem(pokemon = Pokemon(
+    id = Id(1),
+    name = "bulbasaur",
+    types = listOf(GRASS, POISON),
+    sprites = Sprites("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png")
+  ))
+}
 
+@Composable
+private fun PokemonItem(
+  pokemon: Pokemon,
+  modifier: Modifier = Modifier,
+) {
+  val surfaceColor = MaterialTheme.colors.ofType(pokemon.types.first()).copy(alpha = 0.7f)
   Surface(
-    modifier = surfaceModifier,
+    modifier = modifier,
     shape = RoundedCornerShape(8.dp),
-    color = MaterialTheme.colors.ofType(pokemon.types.first()).copy(alpha = 0.7f),
+    color = surfaceColor,
   ) {
     Row(
-      horizontalArrangement = Arrangement.Start,
-      verticalAlignment = Alignment.CenterVertically,
       modifier = Modifier
         .fillMaxWidth()
         .padding(start = 8.dp)
-        .height(IntrinsicSize.Min)
+        .height(IntrinsicSize.Min),
+      horizontalArrangement = Arrangement.Start,
+      verticalAlignment = Alignment.CenterVertically
     ) {
-      PokemonInfo(pokemon = pokemon,
-        Modifier
+      PokemonInfo(
+        pokemon = pokemon,
+        modifier = Modifier
           .weight(1f)
-          .padding(vertical = 8.dp), Color.White)
+          .padding(vertical = 8.dp),
+      )
       Spacer(modifier = Modifier.width(8.dp))
-      PokemonImage(pokemon,
-        Modifier
-          .width(80.dp)
-          .fillMaxHeight())
+      PokemonImage(
+        imageUrl = pokemon.sprites.default,
+        modifier = Modifier.fillMaxHeight(),
+      )
     }
   }
 }
 
 @Composable
-private fun PokemonInfo(pokemon: Pokemon, modifier: Modifier = Modifier, textColor: Color) {
+private fun PokemonInfo(
+  pokemon: Pokemon,
+  modifier: Modifier = Modifier,
+) {
   Column(modifier = modifier) {
-    Row(modifier = Modifier.fillMaxWidth()) {
+    Row(
+      modifier = Modifier.fillMaxWidth(),
+      verticalAlignment = Alignment.CenterVertically,
+    ) {
       Text(
-        text = "#${pokemon.id}",
-        color = textColor,
-        style = MaterialTheme.typography.subtitle1,
+        text = "#${pokemon.id.toString().padStart(3, '0')}",
+        style = TextStyle(
+          color = Color.White,
+          fontSize = 12.sp,
+        ),
       )
-      Spacer(Modifier.width(16.dp))
+      Spacer(Modifier.width(8.dp))
       Text(
         text = pokemon.name.replaceFirstChar { it.uppercase() },
         modifier = Modifier.weight(1f),
-        color = textColor,
-        style = MaterialTheme.typography.subtitle1,
+        style = TextStyle(
+          color = Color.White,
+          fontSize = 20.sp,
+          fontWeight = FontWeight.Bold,
+        ),
       )
     }
+
     Spacer(modifier = Modifier.height(8.dp))
+
     Row(
       modifier = Modifier.fillMaxWidth(),
       horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
       pokemon.types.map {
-        PokemonType(it, Modifier.weight(1f), textColor)
+        PokemonType(it)
       }
     }
   }
 }
 
 @Composable
-private fun PokemonType(type: Type, modifier: Modifier = Modifier, textColor: Color) {
+private fun PokemonType(
+  type: Type,
+  modifier: Modifier = Modifier,
+) {
   Surface(
-    modifier = modifier,
+    modifier = modifier.widthIn(min = 64.dp),
     shape = RoundedCornerShape(16.dp),
     color = MaterialTheme.colors.ofType(type),
   ) {
-    Row {
+    Row(
+      modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.Center,
+    ) {
       Image(
         painter = type.painter,
-        contentDescription = ""
+        contentDescription = "icon of ${type.displayName} type",
+        modifier = Modifier.size(16.dp)
       )
+      Spacer(modifier = Modifier.width(4.dp))
       Text(
         text = type.displayName.uppercase(),
         textAlign = TextAlign.Center,
-        modifier = Modifier
-          .fillMaxWidth()
-          .padding(vertical = 4.dp),
-        color = textColor,
-        style = MaterialTheme.typography.caption
+        style = TextStyle(
+          color = Color.White,
+          fontSize = 12.sp,
+        )
       )
     }
   }
 }
 
 @Composable
-private fun PokemonImage(pokemon: Pokemon, modifier: Modifier = Modifier) {
+private fun PokemonImage(
+  imageUrl: String,
+  modifier: Modifier = Modifier,
+) {
   Surface(
+    modifier = modifier,
     shape = RoundedCornerShape(
       topStartPercent = 50,
       bottomStartPercent = 50,
     ),
-    color = Color.White.copy(0.4f),
-    modifier = modifier
+    color = Color.White.copy(0.4f)
   ) {
-    AsyncImage(model = pokemon.sprites.default,
+    AsyncImage(
+      model = imageUrl,
       contentDescription = null,
-      modifier = Modifier.padding(4.dp))
+      modifier = Modifier
+        .defaultMinSize(minHeight = 80.dp)
+        .padding(start = 16.dp)
+    )
   }
 }
 
