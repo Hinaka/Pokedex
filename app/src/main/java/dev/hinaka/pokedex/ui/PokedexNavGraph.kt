@@ -2,6 +2,7 @@ package dev.hinaka.pokedex.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,6 +17,7 @@ import dev.hinaka.pokedex.ui.item.ItemRoute
 import dev.hinaka.pokedex.ui.move.MoveRoute
 import dev.hinaka.pokedex.ui.nature.NatureRoute
 import dev.hinaka.pokedex.ui.pokedex.PokedexRoute
+import dev.hinaka.pokedex.ui.pokedex.PokemonListViewModel
 
 @Composable
 fun PokedexNavGraph(
@@ -29,7 +31,8 @@ fun PokedexNavGraph(
     modifier = modifier,
   ) {
     composable(POKEDEX_ROUTE) {
-      PokedexRoute()
+      val viewModel = hiltViewModel<PokemonListViewModel>()
+      PokedexRoute(viewModel)
     }
     composable(MOVE_ROUTE) {
       MoveRoute()
