@@ -75,4 +75,7 @@ dependencies {
     implementation 'androidx.palette:palette:1.0.0'
     implementation "androidx.paging:paging-runtime:$paging_version"
     implementation "androidx.paging:paging-compose:1.0.0-alpha15"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-paging:2.5.0-alpha02"
 }
