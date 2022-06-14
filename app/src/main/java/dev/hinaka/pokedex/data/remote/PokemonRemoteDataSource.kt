@@ -10,9 +10,8 @@ import javax.inject.Inject
 class PokemonRemoteDataSource @Inject constructor(
   private val pokemonService: PokemonService,
 ) {
-  suspend fun getPokemons(): List<Pokemon> = coroutineScope {
-    val getPokemonsResponse = pokemonService.getPokemons()
-
+  suspend fun getPokemons(offset: Int, limit: Int): List<Pokemon> = coroutineScope {
+    val getPokemonsResponse = pokemonService.getPokemons(offset, limit)
     val pokemons = getPokemonsResponse.results.orEmpty().map {
       async { pokemonService.getPokemon(it.name.orEmpty()).toPokemon() }
     }

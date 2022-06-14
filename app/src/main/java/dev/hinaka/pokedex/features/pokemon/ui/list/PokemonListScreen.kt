@@ -17,14 +17,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -70,15 +67,16 @@ import dev.hinaka.pokedex.ui.theme.ofType
 fun PokemonListScreen(
   viewModel: PokemonListViewModel,
 ) {
-  val lazyPagingItems = viewModel.flow.collectAsLazyPagingItems()
+  val pokemons = viewModel.pokemons.collectAsLazyPagingItems()
+
   LazyColumn(
     modifier = Modifier.fillMaxSize(),
     contentPadding = PaddingValues(all = 8.dp),
     verticalArrangement = Arrangement.spacedBy(8.dp),
   ) {
-    items(lazyPagingItems) { pokemon ->
-      pokemon?.apply {
-        PokemonItem(pokemon = pokemon, modifier = Modifier.fillMaxWidth())
+    items(pokemons) { pokemon ->
+      pokemon?.let {
+        PokemonItem(pokemon = it, modifier = Modifier.fillMaxWidth())
       }
     }
   }

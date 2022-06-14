@@ -7,8 +7,6 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PokemonService {
-  @GET("pokemon")
-  suspend fun getPokemons(): GetPokemonsResponse
 
   @GET("pokemon")
   suspend fun getPokemons(
