@@ -17,4 +17,7 @@ interface PokemonDao {
 
   @Query("DELETE FROM pokemons")
   suspend fun clearAll()
+
+  @Query("SELECT COUNT(*) FROM pokemons")
+  suspend fun count(): Int
 }

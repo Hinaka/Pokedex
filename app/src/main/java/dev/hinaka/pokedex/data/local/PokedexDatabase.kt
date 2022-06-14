@@ -12,6 +12,8 @@ import androidx.room.RoomDatabase
 )
 abstract class PokedexDatabase : RoomDatabase() {
 
+  abstract fun pokemonDao(): PokemonDao
+
   companion object {
     fun create(context: Context, useInMemory: Boolean): PokedexDatabase {
       val builder = if (useInMemory) {
