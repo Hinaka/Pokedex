@@ -17,7 +17,7 @@ import dev.hinaka.pokedex.ui.item.ItemRoute
 import dev.hinaka.pokedex.ui.move.MoveRoute
 import dev.hinaka.pokedex.ui.nature.NatureRoute
 import dev.hinaka.pokedex.ui.pokedex.PokedexRoute
-import dev.hinaka.pokedex.ui.pokedex.PokemonListViewModel
+import dev.hinaka.pokedex.features.pokemon.ui.list.PokemonListViewModel
 
 @Composable
 fun PokedexNavGraph(

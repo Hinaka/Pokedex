@@ -2,6 +2,7 @@ package dev.hinaka.pokedex.ui.pokedex
 
 import androidx.compose.runtime.Composable
 import dev.hinaka.pokedex.features.pokemon.ui.list.PokemonListScreen
+import dev.hinaka.pokedex.features.pokemon.ui.list.PokemonListViewModel
 
 @Composable
 fun PokedexRoute(viewModel: PokemonListViewModel) {

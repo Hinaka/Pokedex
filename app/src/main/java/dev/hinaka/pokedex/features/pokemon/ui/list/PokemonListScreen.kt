@@ -37,6 +37,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.items
 import coil.compose.AsyncImage
 import dev.hinaka.pokedex.R
 import dev.hinaka.pokedex.domain.models.common.Id
@@ -62,21 +64,22 @@ import dev.hinaka.pokedex.domain.models.type.Type.ROCK
 import dev.hinaka.pokedex.domain.models.type.Type.STEEL
 import dev.hinaka.pokedex.domain.models.type.Type.UNKNOWN
 import dev.hinaka.pokedex.domain.models.type.Type.WATER
-import dev.hinaka.pokedex.ui.pokedex.PokemonListViewModel
 import dev.hinaka.pokedex.ui.theme.ofType
 
 @Composable
 fun PokemonListScreen(
   viewModel: PokemonListViewModel,
 ) {
-  val pokemons by viewModel.pokemons.collectAsState()
+  val lazyPagingItems = viewModel.flow.collectAsLazyPagingItems()
   LazyColumn(
     modifier = Modifier.fillMaxSize(),
     contentPadding = PaddingValues(all = 8.dp),
     verticalArrangement = Arrangement.spacedBy(8.dp),
   ) {
-    items(pokemons) { pokemon ->
-      PokemonItem(pokemon = pokemon, modifier = Modifier.fillMaxWidth())
+    items(lazyPagingItems) { pokemon ->
+      pokemon?.apply {
+        PokemonItem(pokemon = pokemon, modifier = Modifier.fillMaxWidth())
+      }
     }
   }
 }
