@@ -1,4 +1,4 @@
-package dev.hinaka.pokedex.data.di
+package dev.hinaka.pokedex.data.local
 
 import android.content.Context
 import dagger.Module
@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class RoomModule {
+class LocalModule {
 
 
   @Provides
