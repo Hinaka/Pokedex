@@ -1,7 +1,7 @@
-package dev.hinaka.pokedex.data.remote
+package dev.hinaka.pokedex.data.remote.services
 
-import dev.hinaka.pokedex.data.responses.pokemon.GetPokemonResponse
-import dev.hinaka.pokedex.data.responses.pokemon.GetPokemonsResponse
+import dev.hinaka.pokedex.data.remote.responses.pokemon.GetPokemonResponse
+import dev.hinaka.pokedex.data.remote.responses.pokemon.GetPokemonsResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -5,8 +5,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.map
 import dev.hinaka.pokedex.data.local.PokedexDatabase
-import dev.hinaka.pokedex.data.local.toPokemon
-import dev.hinaka.pokedex.data.remote.PokemonService
+import dev.hinaka.pokedex.data.local.entities.toPokemon
+import dev.hinaka.pokedex.data.remote.services.PokemonService
 import dev.hinaka.pokedex.domain.repositories.PokemonRepository
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -22,5 +22,7 @@ class PokemonDataRepository @Inject constructor(
     remoteMediator = PokemonRemoteMediator(database, pokemonService)
   ) {
     database.pokemonDao().pagingSource()
-  }.flow.map { it.map { it.toPokemon() } }
+  }.flow.map {
+    it.map { it.toPokemon() }
+  }
 }

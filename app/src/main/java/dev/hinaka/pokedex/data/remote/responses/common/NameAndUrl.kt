@@ -1,4 +1,4 @@
-package dev.hinaka.pokedex.data.responses.common
+package dev.hinaka.pokedex.data.remote.responses.common
 
 import kotlinx.serialization.Serializable
 

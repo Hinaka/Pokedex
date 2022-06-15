@@ -6,9 +6,9 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import dev.hinaka.pokedex.data.local.PokedexDatabase
-import dev.hinaka.pokedex.data.local.PokemonEntity
-import dev.hinaka.pokedex.data.remote.PokemonService
-import dev.hinaka.pokedex.data.responses.pokemon.GetPokemonResponse
+import dev.hinaka.pokedex.data.local.entities.PokemonEntity
+import dev.hinaka.pokedex.data.remote.responses.pokemon.GetPokemonResponse
+import dev.hinaka.pokedex.data.remote.services.PokemonService
 import dev.hinaka.pokedex.domain.models.type.Type
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll

@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import dev.hinaka.pokedex.data.local.daos.PokemonDao
+import dev.hinaka.pokedex.data.local.entities.PokemonEntity
 
 @Database(
   entities = [PokemonEntity::class],

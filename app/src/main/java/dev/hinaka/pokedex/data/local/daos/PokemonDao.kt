@@ -1,10 +1,11 @@
-package dev.hinaka.pokedex.data.local
+package dev.hinaka.pokedex.data.local.daos
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import dev.hinaka.pokedex.data.local.entities.PokemonEntity
 
 @Dao
 interface PokemonDao {

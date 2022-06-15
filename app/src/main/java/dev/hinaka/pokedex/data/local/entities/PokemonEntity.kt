@@ -1,4 +1,4 @@
-package dev.hinaka.pokedex.data.local
+package dev.hinaka.pokedex.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

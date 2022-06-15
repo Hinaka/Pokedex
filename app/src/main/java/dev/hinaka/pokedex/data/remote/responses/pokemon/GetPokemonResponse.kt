@@ -1,6 +1,6 @@
-package dev.hinaka.pokedex.data.responses.pokemon
+package dev.hinaka.pokedex.data.remote.responses.pokemon
 
-import dev.hinaka.pokedex.data.responses.common.NameAndUrl
+import dev.hinaka.pokedex.data.remote.responses.common.NameAndUrl
 import dev.hinaka.pokedex.domain.models.common.Id
 import dev.hinaka.pokedex.domain.models.common.Sprites
 import dev.hinaka.pokedex.domain.models.pokemon.Pokemon
