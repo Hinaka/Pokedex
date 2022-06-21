@@ -11,29 +11,22 @@ import dev.hinaka.pokedex.domain.models.type.Type
 data class PokemonEntity(
   @PrimaryKey val id: Long,
   val name: String,
-  val type1: Int,
-  val type2: Int,
+  val type1: Type?,
+  val type2: Type?,
   val imageUrl: String,
 )
 
 fun Pokemon.toEntity() = PokemonEntity(
   id = id.id,
   name = name,
-  type1 = types.firstOrNull()?.ordinal ?: -1,
-  type2 = types.lastOrNull()?.ordinal ?: -1,
+  type1 = types.firstOrNull(),
+  type2 = types.lastOrNull(),
   imageUrl = sprites.default,
 )
 
 fun PokemonEntity.toPokemon() = Pokemon(
   id = Id(id),
   name = name,
-  types = mutableListOf<Type>().apply {
-    Type.values().getOrNull(type1)?.also {
-      add(it)
-    }
-    Type.values().getOrNull(type2)?.also {
-      add(it)
-    }
-  },
+  types = listOfNotNull(type1, type2),
   sprites = Sprites(imageUrl)
 )

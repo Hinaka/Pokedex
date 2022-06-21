@@ -91,7 +91,7 @@ private fun GetPokemonResponse.toEntity() = PokemonEntity(
       "unknown" -> Type.UNKNOWN
       else -> null
     }
-  }?.ordinal ?: -1,
+  },
   type2 = types?.getOrNull(1)?.let {
     when (it.type?.name) {
       "normal" -> Type.NORMAL
@@ -115,6 +115,6 @@ private fun GetPokemonResponse.toEntity() = PokemonEntity(
       "unknown" -> Type.UNKNOWN
       else -> null
     }
-  }?.ordinal ?: -1,
+  },
   imageUrl = sprites?.other?.officialArtwork?.front_default.orEmpty(),
 )
