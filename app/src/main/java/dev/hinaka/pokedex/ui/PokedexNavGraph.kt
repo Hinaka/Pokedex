@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dev.hinaka.pokedex.features.pokemon.ui.list.PokemonListViewModel
 import dev.hinaka.pokedex.ui.PokedexDestinations.ABILITY_ROUTE
 import dev.hinaka.pokedex.ui.PokedexDestinations.ITEM_ROUTE
 import dev.hinaka.pokedex.ui.PokedexDestinations.MOVE_ROUTE
@@ -16,8 +17,7 @@ import dev.hinaka.pokedex.ui.ability.AbilityRoute
 import dev.hinaka.pokedex.ui.item.ItemRoute
 import dev.hinaka.pokedex.ui.move.MoveRoute
 import dev.hinaka.pokedex.ui.nature.NatureRoute
-import dev.hinaka.pokedex.ui.pokedex.PokedexRoute
-import dev.hinaka.pokedex.ui.pokedex.PokemonListViewModel
+import dev.hinaka.pokedex.features.pokemon.ui.PokedexRoute
 
 @Composable
 fun PokedexNavGraph(

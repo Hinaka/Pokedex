@@ -1,6 +1,6 @@
-package dev.hinaka.pokedex.data.responses.pokemon
+package dev.hinaka.pokedex.data.remote.responses.pokemon
 
-import dev.hinaka.pokedex.data.responses.common.NameAndUrl
+import dev.hinaka.pokedex.data.remote.responses.common.NameAndUrl
 import kotlinx.serialization.Serializable
 
 @Serializable
