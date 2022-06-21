@@ -7,6 +7,7 @@ import androidx.paging.map
 import dev.hinaka.pokedex.data.local.PokedexDatabase
 import dev.hinaka.pokedex.data.local.entities.toPokemon
 import dev.hinaka.pokedex.data.remote.services.PokemonService
+import dev.hinaka.pokedex.data.repositories.mediators.PokemonRemoteMediator
 import dev.hinaka.pokedex.domain.repositories.PokemonRepository
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

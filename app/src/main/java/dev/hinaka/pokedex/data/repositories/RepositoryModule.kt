@@ -1,4 +1,4 @@
-package dev.hinaka.pokedex.data
+package dev.hinaka.pokedex.data.repositories
 
 import dagger.Binds
 import dagger.Module
